@@ -9,6 +9,8 @@ import {
   View,
   Text,
 } from 'react-native';
+
+import cartData from '../logics/CartData';
 import Header from '../components/Header';
 import ItemList from '../components/ItemList';
 import Footer from '../components/Footer';
@@ -25,8 +27,8 @@ export default class ShopCart extends Component {
     return (
       <View style={styles.root}>
         <Header navigator={navigator} />
-        <ItemList />
-        <Footer />
+        <ItemList cartData={cartData} />
+        <Footer cartData={cartData} navigator={navigator} />
       </View>
     );
   }

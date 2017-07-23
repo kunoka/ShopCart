@@ -3,44 +3,29 @@
  */
 import React, { Component } from 'react';
 import {
-  AppState,
   StyleSheet,
-  View,
-  Text,
-  TouchableOpacity,
+  ScrollView,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Item from './Item';
+
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    flexDirection: 'row',
-    height: 44,
-    backgroundColor: '#F5F5F5',
-    justifyContent: 'space-between',
-  },
-  text: {
-    textAlign: 'center',
-    fontSize: 18,
-  },
-  back: {
-    fontSize: 30,
-    color: '#900',
-  },
-  right: {
-    fontSize: 30,
-    color: 'transparent',
   },
 });
+// import cartData from '../logics/CartData';
 
 export default class ItemList extends Component {
-  goBack = () => {
-    const {navigator} = this.props;
-    navigator.pop();
-  }
   render() {
+    const { cartData } = this.props;
     return (
-      <View style={styles.root}>
-      </View>
+      <ScrollView style={styles.root}>
+        {
+          cartData.map((data, index) => {
+            return <Item key={data.id} index={index} data={data} cartData={cartData} />
+          })
+        }
+      </ScrollView>
     );
   }
 }
