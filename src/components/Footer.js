@@ -40,28 +40,32 @@ const styles = StyleSheet.create({
     color: '#fff',
   }
 });
+import {observer} from 'mobx-react/native';
 import Circle from '../components/Circle';
+
+@observer
 export default class Footer extends Component {
   goBack = () => {
     const { navigator } = this.props;
     navigator.pop();
   }
   selectAll = (checked) => {
-    alert(checked);
+    console.log(checked);
   };
   render() {
+    const { cartData } = this.props;
     return (
       <View style={styles.root}>
         <View style={styles.selectWrapper}>
           <Circle onPress={this.selectAll}/>
           <Text style={styles.selectText}>全选</Text>
         </View>
-        <Text>总计:$</Text>
+        <Text>总计:${cartData.sum.get()}</Text>
         <TouchableOpacity
           style={styles.checkout}
           onPress={this.checkout}
         >
-          <Text style={styles.checkoutText}>去结算(0)</Text>
+          <Text style={styles.checkoutText}>去结算({cartData.count.get()})</Text>
         </TouchableOpacity>
       </View>
     );

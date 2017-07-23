@@ -28,7 +28,7 @@ export default class ShopCart extends Component {
       <View style={styles.root}>
         <Header navigator={navigator} />
         <ItemList cartData={cartData} />
-        <Footer cartData={cartData} navigator={navigator} />
+        <Footer cartData={cartData} />
       </View>
     );
   }

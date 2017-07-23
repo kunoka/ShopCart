@@ -2,7 +2,7 @@
  * Created by harry on 23/07/2017.
  */
 
-import { observable } from 'mobx';
+import { observable, computed } from 'mobx';
 
 const cartData = observable([
   {
@@ -32,5 +32,22 @@ cartData.plus = (index) => {
 cartData.check = (checked, index) => {
   cartData[index].checked = checked;
 };
-
+cartData.count = computed(() => {
+  return cartData.reduce((a, b)=>{
+    if(b.checked) {
+      return a + b.count;
+    }else {
+      return a;
+    }
+  },0);
+});
+cartData.sum = computed(() => {
+  return cartData.reduce((a, b)=>{
+    if(b.checked) {
+      return a + b.count * b.price;
+    }else {
+      return a;
+    }
+  },0);
+});
 export default cartData;

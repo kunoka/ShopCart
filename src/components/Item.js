@@ -52,8 +52,9 @@ const styles = StyleSheet.create({
 });
 @observer
 export default class Item extends Component {
-  check = () => {
-
+  check = (checked) => {
+    const {index, cartData} = this.props;
+    cartData.check(checked, index);
   };
   minus = () => {
     const { index, data: {count}, cartData } = this.props;
