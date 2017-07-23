@@ -9,7 +9,6 @@ import {
   Text,
 } from 'react-native';
 import Navigator from 'react-native-deprecated-custom-components';
-
 import Index from './pages/Index';
 
 const INITIAL_ROUTE = {
@@ -33,7 +32,6 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.root}>
-        <Text style={styles.text}>这是首页</Text>
         <Navigator.Navigator
           initialRoute={INITIAL_ROUTE}
           renderScene={this.renderScene} />

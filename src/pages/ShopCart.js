@@ -9,6 +9,9 @@ import {
   View,
   Text,
 } from 'react-native';
+import Header from '../components/Header';
+import ItemList from '../components/ItemList';
+import Footer from '../components/Footer';
 
 const styles = StyleSheet.create({
   root: {
@@ -18,9 +21,12 @@ const styles = StyleSheet.create({
 
 export default class ShopCart extends Component {
   render() {
+    const {navigator } = this.props;
     return (
       <View style={styles.root}>
-        <Text style={styles.text}>购物车</Text>
+        <Header navigator={navigator} />
+        <ItemList />
+        <Footer />
       </View>
     );
   }
